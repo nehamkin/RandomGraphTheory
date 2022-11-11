@@ -77,16 +77,17 @@ public class Graph {
                     if (!visited[neighbour]) {
                         visited[neighbour] = true;
                         queue.add(neighbour);
-                        component.incrementNumberOfEdges();
                     }
                 }
             }
         }
+        int edges = 0;
         for(int i = 0; i < numberOfNodes; i++) {
             if(visited[i]) {
-                map.remove(i);
+                edges += map.remove(i).size();
             }
         }
+        component.setNumberOfEdges(edges/2);
         return component;
     }
 

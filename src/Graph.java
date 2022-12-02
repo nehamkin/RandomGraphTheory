@@ -45,22 +45,18 @@ public class Graph {
 
     public double getMaxNumberOfEdges() {
         double out = numberOfNodes * (numberOfNodes - 1) / 2;
-        System.out.println("Max edged " + out );
         return out;
     }
 
     public double getProbabilityOfEdge(double l, double c) {
         double epsilon = l * Math.pow(numberOfNodes, (-1 / 3));
         double out = (c - epsilon);
-        System.out.println("probability " + out);
         return out;
     }
 
     public double getNumberOfEdgesToAdd(double l, double c) {
         double probabilityOfEdge = getProbabilityOfEdge(l, c);
-        System.out.println(getMaxNumberOfEdges() + "/" + numberOfNodes);
         double out = (probabilityOfEdge * (numberOfNodes - 1) / 2);
-        System.out.println("Edges to add " + out);
         return out;
     }
 

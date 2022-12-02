@@ -56,35 +56,20 @@ public class Main {
         return map;
     }
     public static void main(String[] args) {
-        Graph graph = new Graph(500000);
-        graph.createGraph(0, 1);
-//        graph.print();
-        int numberOfEmptyComponents = graph.getEmptyComponents();
-        System.out.println("Number of empty components: " + numberOfEmptyComponents);
-        List<Component> components = graph.getComponents();
-        Map<String, Integer> map = mapComponents(components);
-        System.out.println(map.remove("MAX_NODES"));
-        System.out.println(map.remove("MAX_EDGES"));
-        for (String key : map.keySet()) {
+        List<Map<String, Integer>> experiments = runExperiment(10,500000, 0, 1);
+        Map<String, Integer> maxesMap = new HashMap<>();
+        for(Map<String,Integer> exp :  experiments){
+            if(exp.containsKey("MAX_MAP")){
+                maxesMap = exp;
+                maxesMap.remove("MAX_MAP");
+            }
+        }
+        for (String key : maxesMap.keySet()){
             Component component = Component.makeComponent(key);
             component.print();
-            System.out.println("Number of components: " + map.get(key));
+            System.out.println(maxesMap.get(key));
             System.out.println("-----------------");
         }
-//        List<Map<String, Integer>> experiments = runExperiment(10,100000, 0, 1);
-//        Map<String, Integer> maxesMap = new HashMap<>();
-//        for(Map<String,Integer> exp :  experiments){
-//            if(exp.containsKey("MAX_MAP")){
-//                maxesMap = exp;
-//                maxesMap.remove("MAX_MAP");
-//            }
-//        }
-//        for (String key : maxesMap.keySet()){
-//            Component component = Component.makeComponent(key);
-//            component.print();
-//            System.out.println(maxesMap.get(key));
-//            System.out.println("-----------------");
-//        }
 
     }
 }

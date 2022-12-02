@@ -37,28 +37,35 @@ public class Graph {
         }
     }
 
-    public void addEdges(int numberOfEdges) {
+    public void addEdges(double numberOfEdges) {
         for (int i = 0; i < numberOfEdges; i++) {
             addEdge();
         }
     }
 
-    public int getMaxNumberOfEdges() {
-        return numberOfNodes * (numberOfNodes - 1) / 2;
+    public double getMaxNumberOfEdges() {
+        double out = numberOfNodes * (numberOfNodes - 1) / 2;
+        System.out.println("Max edged " + out );
+        return out;
     }
 
     public double getProbabilityOfEdge(double l, double c) {
         double epsilon = l * Math.pow(numberOfNodes, (-1 / 3));
-        return (c - epsilon) / (numberOfNodes);
+        double out = (c - epsilon);
+        System.out.println("probability " + out);
+        return out;
     }
 
-    public int getNumberOfEdgesToAdd(double l, double c) {
+    public double getNumberOfEdgesToAdd(double l, double c) {
         double probabilityOfEdge = getProbabilityOfEdge(l, c);
-        return (int) (probabilityOfEdge * getMaxNumberOfEdges());
+        System.out.println(getMaxNumberOfEdges() + "/" + numberOfNodes);
+        double out = (probabilityOfEdge * (numberOfNodes - 1) / 2);
+        System.out.println("Edges to add " + out);
+        return out;
     }
 
     public void createGraph(double l, double c) {
-        int numberOfEdgesToAdd = getNumberOfEdgesToAdd(l, c);
+        double numberOfEdgesToAdd = getNumberOfEdgesToAdd(l, c);
         addEdges(numberOfEdgesToAdd);
     }
 

@@ -12,6 +12,14 @@ public class Component {
         this.numberOfEdges = numberOfEdges;
     }
 
+    public int getNumberOfNodes() {
+        return numberOfNodes;
+    }
+
+    public int getNumberOfEdges() {
+        return numberOfEdges;
+    }
+
     public void incrementNumberOfNodes() {
         numberOfNodes++;
     }
@@ -21,8 +29,7 @@ public class Component {
     }
 
     public void print() {
-        System.out.println("Number of nodes: " + numberOfNodes);
-        System.out.println("Number of edges: " + numberOfEdges);
+        System.out.print("Nodes: " + numberOfNodes + " | Edges: "+ numberOfEdges + " ---> ");
     }
 
     public String makeKey(){
@@ -33,7 +40,7 @@ public class Component {
         String[] split = key.split("_");
         int numberOfNodes = Integer.parseInt(split[0]);
         int numberOfEdges = Integer.parseInt(split[1]);
-        Component component = new Component(numberOfEdges, numberOfNodes);
+        Component component = new Component(numberOfNodes, numberOfEdges);
         return component;
     }
 }
